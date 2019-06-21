@@ -5,6 +5,7 @@ python:
 install:
   - git clone https://github.com/lluc/coirault-skos.git
   - pip install rdflib
+  - pip install pytest
 
 script:
   - pytest
