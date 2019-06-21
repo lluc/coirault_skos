@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ..skos import Skos
+from coirault_skos.skos import Skos
 
 sk = Skos()
 sk.open("15_skos.xml")
