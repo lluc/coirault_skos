@@ -46,3 +46,18 @@ class Skos():
             """ % chapter
         result = self.g.query(request)
         return result
+
+    def read_song(self, topic):
+        request = """
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            PREFIX isothes: <http://purl.org/iso25964/skos-thes#>
+            PREFIX opentheso: <http://purl.org/umu/uneskos#>
+            SELECT ?concept (STR(?frLabel) AS ?francais) WHERE {
+              ?concept opentheso:memberOf <%s> .
+              ?concept skos:prefLabel ?frLabel.
+              FILTER(langMatches(lang(?frLabel), 'fr'))
+            }
+            ORDER BY ?frLabel
+            """ % topic
+        result = self.g.query(request)
+        return result

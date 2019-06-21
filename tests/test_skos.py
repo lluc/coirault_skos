@@ -17,3 +17,10 @@ def test_read_topic():
     chapter = "http://sha.univ-poitiers.fr/musicologie/vocabulaires/coirault/collection_I"  # noqa
     res = sk.read_topic(chapter)
     assert len(res) == 3
+
+
+def test_read_song():
+    # Read the RDF file and discover every songs in a topic
+    topic = "http://sha.univ-poitiers.fr/musicologie/vocabulaires/coirault/collection_1"  # noqa
+    res = sk.read_song(topic)
+    assert len(res) == 22
