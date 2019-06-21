@@ -32,3 +32,17 @@ class Skos():
         """
         result = self.g.query(request)
         return result
+
+    def read_topic(self, chapter):
+        request = """
+            PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            PREFIX isothes: <http://purl.org/iso25964/skos-thes#>
+            SELECT ?collection (STR(?frLabel) AS ?francais) WHERE {
+              ?collection isothes:superGroup <%s> .
+              ?collection skos:prefLabel ?frLabel.
+              FILTER(langMatches(lang(?frLabel), 'fr'))
+            }
+            ORDER BY ?frLabel
+            """ % chapter
+        result = self.g.query(request)
+        return result
