@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+import os
 from coirault_skos.skos import Skos
 
 sk = Skos()
-sk.open("../15_skos.xml")
+path = os.path.dirname(__file__)
+sk.open(path + "/15_skos.xml")
 
 
 def test_read_chapter():
